@@ -15,6 +15,7 @@ Build and Deploy:
     - chmod 644 ~/.ssh/known_hosts
     - chmod +x ./gradlew
     - ./gradlew bootJar
+    - ls
     - cp build/libs/IotDigitalTwin-0.0.1-SNAPSHOT.jar .
 
     - scp -o StrictHostKeyChecking=no  IotDigitalTwin-0.0.1-SNAPSHOT.jar ubuntu@$EC2_IPADDRESSAUTH:/home/ubuntu/Autenticazione/IoTDigitalTwin/build/libs
