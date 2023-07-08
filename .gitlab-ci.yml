@@ -13,11 +13,11 @@ Build and Deploy:
     - chmod 700 ~/.ssh
     - ssh-keyscan $EC2_IPADDRESSAUTH >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - cd SmartCityWasteManagement
+    - cd IotDigitalTwin
     - chmod +x ./gradlew
     - ./gradlew bootJar
-    - cp build/libs/SmartCityWasteManagement-0.0.1-SNAPSHOT.jar .
+    - cp build/libs/IotDigitalTwin-0.0.1-SNAPSHOT.jar .
 
-    - scp -o StrictHostKeyChecking=no  SmartCityWasteManagement-0.0.1-SNAPSHOT.jar ubuntu@$EC2_IPADDRESSAUTH:/home/ubuntu/Autenticazione/IoTDigitalTwin/build/libs
+    - scp -o StrictHostKeyChecking=no  IotDigitalTwin-0.0.1-SNAPSHOT.jar ubuntu@$EC2_IPADDRESSAUTH:/home/ubuntu/Autenticazione/IoTDigitalTwin/build/libs
     - scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@$EC2_IPADDRESSAUTH:/home/ubuntu/Autenticazione/IoTDigitalTwin
     - ssh -o StrictHostKeyChecking=no ubuntu@$EC2_IPADDRESSAUTH "cd /home/ubuntu/Autenticazione/IoTDigitalTwin; sudo docker stop mysbaimage; sudo docker stop mongodbimage; sudo docker compose up"
