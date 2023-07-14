@@ -103,7 +103,7 @@ public class AtletaRestController {
         return atleti;
     }
 
-    @PreAuthorize("hasAnyRole('AMMINISTRATORE', 'COACH', 'ATLETA')")
+    @PreAuthorize("hasAnyRole('AMMINISTRATORE')")
     @RequestMapping(value = "/findById/{atletaId}", method = RequestMethod.GET)
     public AtletaDTO trovaPerId(@PathVariable String atletaId) {
 
@@ -248,5 +248,20 @@ public class AtletaRestController {
             }
 
         } throw new UserNotFoundException();
+    }
+
+    @PreAuthorize("hasAnyRole('AMMINISTRATORE', 'COACH', 'ATLETA')")
+    @RequestMapping(value = "/findIdCoachByIdAtleta/{idAtleta}", method = RequestMethod.GET)
+    public String trovaIdCoach(@PathVariable String idAtleta){
+
+        Optional<Atleta> optAtleta = atletaRepository.findById(idAtleta);
+
+        Atleta atleta = new Atleta();
+
+        if (optAtleta.isPresent()) {
+            atleta = optAtleta.get();
+        }
+
+        return atleta.getIdCoach();
     }
 }
