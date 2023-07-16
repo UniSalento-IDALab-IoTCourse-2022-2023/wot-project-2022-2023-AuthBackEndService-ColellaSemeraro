@@ -103,7 +103,7 @@ public class AtletaRestController {
         return atleti;
     }
 
-    @PreAuthorize("hasAnyRole('AMMINISTRATORE')")
+    @PreAuthorize("hasAnyRole('AMMINISTRATORE', 'ATLETA', 'COACH')")
     @RequestMapping(value = "/findById/{atletaId}", method = RequestMethod.GET)
     public AtletaDTO trovaPerId(@PathVariable String atletaId) {
 
